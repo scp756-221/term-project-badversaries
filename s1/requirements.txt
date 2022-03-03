@@ -10,7 +10,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.3
 lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
-mccabe==0.6.1
+mccabe==0.7.0
 pylint==2.5.3
 requests==2.24.0
 simplejson==3.17.2
