@@ -11,7 +11,7 @@ Jinja2==2.11.3
 lazy-object-proxy==1.7.1
 MarkupSafe==2.1.0
 mccabe==0.7.0
-pylint==2.5.3
+pylint==2.12.2
 requests==2.24.0
 simplejson==3.17.2
 six==1.15.0
