@@ -7,7 +7,7 @@ click==8.0.4
 colorama==0.4.3
 docutils==0.18.1
 Flask==1.1.2
-idna==2.10
+idna==3.3
 isort==5.10.1
 itsdangerous==1.1.0
 Jinja2==2.11.3
