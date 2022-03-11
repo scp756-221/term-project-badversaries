@@ -164,11 +164,11 @@ def add_songs_to_playlist():
     new_music_list = list(set(music_list))
 
     url = db['name'] + '/' + db['endpoint'][3]
+    payload = {"objtype": "playlist", "objkey": playlist_id}
     response = requests.put(
         url,
-        json={"objtype": "playlist",
-              "objkey": playlist_id,
-              "music_list": new_music_list})
+        params=payload,
+        json={"music_list": new_music_list})
     return (response.json())
 
 
@@ -192,11 +192,11 @@ def delete_songs_from_playlist():
     new_music_list = list(filter(lambda song: (song not in music_list),playlist_data['music_list']))
 
     url = db['name'] + '/' + db['endpoint'][3]
+    payload = {"objtype": "playlist", "objkey": playlist_id}
     response = requests.put(
         url,
-        json={"objtype": "playlist",
-              "objkey": playlist_id,
-              "music_list": new_music_list})
+        params=payload,
+        json={"music_list": new_music_list})
     return (response.json())
 
 
