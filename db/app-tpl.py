@@ -72,8 +72,8 @@ def update():
     headers = request.headers  # noqa: F841
     # check header here
     content = request.get_json()
-    objtype = urllib.parse.unquote_plus(request.args.get(['objtype']))
-    objkey = urllib.parse.unquote_plus(request.args.get(['objkey']))
+    objtype = urllib.parse.unquote_plus(request.args.get('objtype'))
+    objkey = urllib.parse.unquote_plus(request.args.get('objkey'))
     table_name = objtype.capitalize()+"-ZZ-REG-ID"
     table_id = objtype + "_id"
     table = dynamodb.Table(table_name)
