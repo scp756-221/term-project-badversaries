@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cmpt756s3
+  labels:
+    app: cmpt756s3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cmpt756s3
+  template:
+    metadata:
+      name: service3-pod
+      labels:
+        app: cmpt756s3
+    spec:
+      serviceAccountName: svc-s3
+      containers:
+      - name: cmpt756s3
+        image: 'ZZ-CR-ID/ZZ-REG-ID/cmpt756s3:v1'
+        imagePullPolicy: Always
+        env:
+          - name: EXER
+            value: v1
+        ports:
+        - containerPort: 30001
