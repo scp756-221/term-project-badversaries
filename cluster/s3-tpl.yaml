@@ -32,7 +32,6 @@ metadata:
   name: svc-s3
   labels:
     account: SVC_S3
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -67,3 +66,4 @@ spec:
           initialDelaySeconds: 10
           periodSeconds: 5
           failureThreshold: 5
+          
