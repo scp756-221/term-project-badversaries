@@ -124,15 +124,6 @@ def delete_song(music_id):
     return (response.json())
 
 
-@bp.route('/test', methods=['GET'])
-def test():
-    # This value is for user scp756-221
-    if ('6cbd353eaadbc61c35132838888c136e96e31f10643fb2b472753b1acfb36e58' !=
-            ucode):
-        raise Exception("Test failed")
-    return {}
-
-
 # All database calls will have this prefix.  Prometheus metric
 # calls will not---they will have route '/metrics'.  This is
 # the conventional organization.
