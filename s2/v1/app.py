@@ -20,13 +20,6 @@ import requests
 
 import simplejson as json
 
-# Local modules
-import unique_code
-
-# The unique exercise code
-# The EXER environment variable has a value specific to this exercise
-ucode = unique_code.exercise_hash(os.getenv('EXER'))
-
 # The application
 
 app = Flask(__name__)
@@ -134,7 +127,6 @@ if __name__ == '__main__':
         logging.error("missing port arg 1")
         sys.exit(-1)
 
-    app.logger.error("Unique code: {}".format(ucode))
     p = int(sys.argv[1])
     # Do not set debug=True---that will disable the Prometheus metrics
     app.run(host='0.0.0.0', port=p, threaded=True)
