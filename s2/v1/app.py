@@ -39,7 +39,8 @@ db = {
     "endpoint": [
         "read",
         "write",
-        "delete"
+        "delete",
+        "read_all"
     ]
 }
 bp = Blueprint('app', __name__)
