@@ -65,8 +65,8 @@ def list_all():
     response = requests.get(
         url,
         params=payload,
-        headers={'Authorization': headers['Authorization']}).json()['Items']
-    return (response)
+        headers={'Authorization': headers['Authorization']})
+    return (response.json())
 
 
 @bp.route('/<music_id>', methods=['GET'])
