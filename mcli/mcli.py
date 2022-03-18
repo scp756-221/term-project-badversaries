@@ -161,18 +161,6 @@ Enter 'help' for command list.
         """
         return True
 
-    def do_test(self, arg):
-        """
-        Run a test stub on the music server.
-        """
-        url = get_url(self.name, self.port)
-        r = requests.get(
-            url+'test',
-            headers={'Authorization': DEFAULT_AUTH}
-            )
-        if r.status_code != 200:
-            print("Non-successful status code:", r.status_code)
-
     def do_shutdown(self, arg):
         """
         Tell the music cerver to shut down.
