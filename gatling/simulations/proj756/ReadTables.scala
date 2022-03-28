@@ -36,7 +36,7 @@ object RMusic {
     feed(feeder)
     .exec(http("RMusic ${i}")
       .get("/api/v1/music/${UUID}"))
-      .pause(1)
+      .pause(Utility.envVarToInt("PAUSE", 1000).millis)
   }
 
 }
@@ -49,7 +49,7 @@ object RUser {
     feed(feeder)
     .exec(http("RUser ${i}")
       .get("/api/v1/user/${UUID}"))
-    .pause(1)
+    .pause(Utility.envVarToInt("PAUSE", 1000).millis)
   }
 
 }
@@ -170,3 +170,19 @@ class ReadBothSim extends ReadTablesSim {
   ).protocols(httpProtocol)
 }
 */
+
+/*
+  Read playlist
+*/
+object RPlaylist {
+
+  val feeder = csv("playlist.csv").eager.circular
+
+  val rplaylist = forever("i") {
+    feed(feeder)
+    .exec(http("RPlaylist ${i}")
+      .get("/api/v1/playlist/${UUID}"))
+    .pause(Utility.envVarToInt("PAUSE", 1000).millis)
+  }
+
+}
