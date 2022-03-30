@@ -60,7 +60,13 @@ def list_all():
                         status=401,
                         mimetype='application/json')
     # list all songs here
-    return {}
+    payload = {"objtype": "music"}
+    url = db['name'] + '/' + db['endpoint'][3]
+    response = requests.get(
+        url,
+        params=payload,
+        headers={'Authorization': headers['Authorization']})
+    return (response.json())
 
 
 @bp.route('/<music_id>', methods=['GET'])
