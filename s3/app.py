@@ -155,7 +155,7 @@ def add_songs_to_playlist():
     songs = requests.get(url, params=payload).json()['Items']
     all_music_ids = list()
     for song in songs:
-        all_music_ids.append(songs['music_id'])
+        all_music_ids.append(song['music_id'])
 
     if not all(music_id in all_music_ids  for music_id in music_list):
         return Response('One or more music IDs don\'t exist', status=400, mimetype="application/json")
@@ -197,6 +197,31 @@ def delete_songs_from_playlist():
         url,
         params=payload,
         json={"music_list": new_music_list})
+    return (response.json())
+
+
+@bp.route('/rename', methods=['PUT'])
+def rename_playlist():
+    """
+    Rename playlist.
+    """
+    try:
+        user_id = get_user_from_auth(request.headers)
+
+        content = request.get_json()
+        playlist_id = content['playlist_id']
+        playlist_name = content['playlist_name']
+
+        playlist_data = get_playlist_from_id(playlist_id, request.headers)
+    except Exception as ex:
+        return Response(str(ex), status=400, mimetype="application/json")
+
+    url = db['name'] + '/' + db['endpoint'][3]
+    payload = {"objtype": "playlist", "objkey": playlist_id}
+    response = requests.put(
+        url,
+        params=payload,
+        json={"playlist_name": playlist_name})
     return (response.json())
 
 

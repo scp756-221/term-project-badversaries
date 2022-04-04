@@ -1,5 +1,4 @@
-docker_images:
-	templates
+docker_images: templates
 	make -f k8s.mak cri
 
 deploy_all: templates create_cluster provision urls
