@@ -80,7 +80,7 @@ def create_playlist(playlist_name, music_list, uid, uuid):
               "playlist_name": playlist_name,
               "music_list": music_list,
               "uid":uid,
-              "UUID": uuid})
+              "uuid": uuid})
     return (response.json())
 
 
@@ -129,7 +129,7 @@ if __name__ == '__main__':
         rdr = csv.reader(inp)
         next(rdr)  # Skip header
         for playlist_name, music_list, uid, uuid in rdr:
-            songs = music_list.strip().split(",")
+            songs = music_list[1:-1].strip().split(",")
             resp = create_playlist(playlist_name.strip(),
                                    songs,
                                    uid.strip(),
