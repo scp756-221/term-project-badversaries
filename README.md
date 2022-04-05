@@ -1,9 +1,4 @@
-# SFU CMPT 756 main project directory
-
-This is the course repo for CMPT 756 (Spring 2022)
-
-You will find resources for your assignments and term project here.
-
+# Badversaries (Bad Adversaries :v ) project directory. Browse through our awesome project here :)
 
 ### 1. Instantiate the template files
 
@@ -47,8 +42,27 @@ installed by running
 $ aws dynamodb list-tables
 ~~~
 
-The resulting output should include tables `User` and `Music`.
+The resulting output should include tables `User`, `Music` and `Playlist`.
 
 ----
 
 
+### 3. Build and push the Images
+
+~~~
+$ make -f magic.mak docker_images
+~~~
+Once pushed, make these images public manually.
+
+### 4. Start the cluster
+
+This can take a long time since it'll create the cluster.
+~~~
+$ make -f magic.mak deploy_all
+~~~
+
+### 5. Delete the cluster
+
+~~~
+$ make -f magic.mak teardown
+~~~
