@@ -32,6 +32,7 @@ metadata:
   name: svc-s3
   labels:
     account: SVC_S3
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -61,7 +62,7 @@ spec:
         - containerPort: 30002
         livenessProbe:
           httpGet:
-            path: /api/v1/playlist
+            path: /api/v1/playlist/health
             port: 30002
           initialDelaySeconds: 10
           periodSeconds: 5

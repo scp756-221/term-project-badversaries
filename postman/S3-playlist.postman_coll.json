@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "36f91be2-ba06-4eee-89a2-506c5afadb0f",
+		"name": "playlist_service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create playlist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"playlist_name\": \"test_playlist\", \"music_list\": [\"6ecfafd0-8a35-4af6-a9e2-cbd79b3abeea\",\"26e6462c-eacf-40bb-b4d0-d683966e2624\"]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:9001/api/v1/playlist/"
+			},
+			"response": [
+				{
+					"name": "Create playlist",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"playlist_name\": \"test_playlist\", \"music_list\": [\"6ecfafd0-8a35-4af6-a9e2-cbd79b3abeea\",\"26e6462c-eacf-40bb-b4d0-d683966e2624\"]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:9001/api/v1/playlist/"
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"playlist_id\": \"10f47888-e280-4588-98e0-1a2720afba1e\"\n}"
+				}
+			]
+		},
+		{
+			"name": "GET All Playlists for User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+						"type": "default"
+					}
+				],
+				"url": "http://127.0.0.1:9001/api/v1/playlist/all"
+			},
+			"response": [
+				{
+					"name": "GET All Playlists for User",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+								"type": "default"
+							}
+						],
+						"url": "http://127.0.0.1:9001/api/v1/playlist/all"
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"playlists\": [\n        {\n            \"music_list\": [\n                \"6ecfafd0-8a35-4af6-a9e2-cbd79b3abeea\",\n                \"26e6462c-eacf-40bb-b4d0-d683966e2624\"\n            ],\n            \"playlist_id\": \"10f47888-e280-4588-98e0-1a2720afba1e\",\n            \"playlist_name\": \"test_playlist\",\n            \"uid\": \"423a10a6-ab66-48c5-a1c7-dffb3169d744\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "GET Playlist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+						"type": "default"
+					}
+				],
+				"url": "http://127.0.0.1:9001/api/v1/playlist/b09410c1-62d2-48ba-82b8-16e93f777c4a"
+			},
+			"response": [
+				{
+					"name": "GET Playlist",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+								"type": "default"
+							}
+						],
+						"url": "http://127.0.0.1:9001/api/v1/playlist/10f47888-e280-4588-98e0-1a2720afba1e"
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"music_list\": [\n        {\n            \"Artist\": \"Taylor Swift\",\n            \"SongTitle\": \"The Last Great American Dynasty\",\n            \"music_id\": \"6ecfafd0-8a35-4af6-a9e2-cbd79b3abeea\"\n        },\n        {\n            \"Artist\": \"William Prince\",\n            \"SongTitle\": \"Reliever\",\n            \"music_id\": \"26e6462c-eacf-40bb-b4d0-d683966e2624\"\n        }\n    ],\n    \"playlist_id\": \"10f47888-e280-4588-98e0-1a2720afba1e\",\n    \"playlist_name\": \"test_playlist\",\n    \"uid\": \"423a10a6-ab66-48c5-a1c7-dffb3169d744\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add music to playlist",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"playlist_id\":\"b09410c1-62d2-48ba-82b8-16e93f777c4a\", \"music_list\": [\"6ecfafd0-8a35-4af6-a9e2-cbd79b3abeea\"]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:9001/api/v1/playlist/add_songs"
+			},
+			"response": [
+				{
+					"name": "Add music to playlist",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"playlist_id\":\"10f47888-e280-4588-98e0-1a2720afba1e\", \"music_list\": [\"6ecfafd0-8a35-4af6-a9e2-cbd79b3abeea\"]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:9001/api/v1/playlist/add_songs"
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"ResponseMetadata\": {\n        \"HTTPHeaders\": {\n            \"connection\": \"keep-alive\",\n            \"content-length\": \"2\",\n            \"content-type\": \"application/x-amz-json-1.0\",\n            \"date\": \"Mon, 04 Apr 2022 20:36:55 GMT\",\n            \"server\": \"Server\",\n            \"x-amz-crc32\": \"2745614147\",\n            \"x-amzn-requestid\": \"IAFHNN1KN670J5HDMFJ4O5I36RVV4KQNSO5AEMVJF66Q9ASUAAJG\"\n        },\n        \"HTTPStatusCode\": 200,\n        \"RequestId\": \"IAFHNN1KN670J5HDMFJ4O5I36RVV4KQNSO5AEMVJF66Q9ASUAAJG\",\n        \"RetryAttempts\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete music from playlist",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"playlist_id\":\"b09410c1-62d2-48ba-82b8-16e93f777c4a\", \"music_list\": [\"6ecfafd0-8a35-4af6-a9e2-cbd79b3abeea\"]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:9001/api/v1/playlist/delete_songs"
+			},
+			"response": [
+				{
+					"name": "Delete music from playlist",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"playlist_id\":\"10f47888-e280-4588-98e0-1a2720afba1e\", \"music_list\": [\"6ecfafd0-8a35-4af6-a9e2-cbd79b3abeea\"]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:9001/api/v1/playlist/delete_songs"
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"ResponseMetadata\": {\n        \"HTTPHeaders\": {\n            \"connection\": \"keep-alive\",\n            \"content-length\": \"2\",\n            \"content-type\": \"application/x-amz-json-1.0\",\n            \"date\": \"Mon, 04 Apr 2022 20:39:25 GMT\",\n            \"server\": \"Server\",\n            \"x-amz-crc32\": \"2745614147\",\n            \"x-amzn-requestid\": \"B2S32S57O6JD6G7I2ULPQ330ABVV4KQNSO5AEMVJF66Q9ASUAAJG\"\n        },\n        \"HTTPStatusCode\": 200,\n        \"RequestId\": \"B2S32S57O6JD6G7I2ULPQ330ABVV4KQNSO5AEMVJF66Q9ASUAAJG\",\n        \"RetryAttempts\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Rename Playlist",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"playlist_id\":\"10f47888-e280-4588-98e0-1a2720afba1e\", \"playlist_name\": \"updated_name1\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:9001/api/v1/playlist/rename"
+			},
+			"response": [
+				{
+					"name": "Rename Playlist",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"playlist_id\":\"10f47888-e280-4588-98e0-1a2720afba1e\", \"playlist_name\": \"updated_name1\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:9001/api/v1/playlist/rename"
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"ResponseMetadata\": {\n        \"HTTPHeaders\": {\n            \"connection\": \"keep-alive\",\n            \"content-length\": \"2\",\n            \"content-type\": \"application/x-amz-json-1.0\",\n            \"date\": \"Mon, 04 Apr 2022 20:44:54 GMT\",\n            \"server\": \"Server\",\n            \"x-amz-crc32\": \"2745614147\",\n            \"x-amzn-requestid\": \"D5IIPJV3VV7G6I2Q5VJ0DCRGNBVV4KQNSO5AEMVJF66Q9ASUAAJG\"\n        },\n        \"HTTPStatusCode\": 200,\n        \"RequestId\": \"D5IIPJV3VV7G6I2Q5VJ0DCRGNBVV4KQNSO5AEMVJF66Q9ASUAAJG\",\n        \"RetryAttempts\": 0\n    }\n}"
+				}
+			]
+		}
+	]
+}
