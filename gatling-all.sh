@@ -8,4 +8,5 @@ docker container run --detach --rm \
   -e PAUSE=${2} \
   -e SIM_NAME=ReadAllSim \
   --label gatling \
+  ghcr.io/scp-2021-jan-cmpt-756/gatling:3.4.2 \
   -s proj756.ReadAllSim
