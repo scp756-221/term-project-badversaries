@@ -89,7 +89,7 @@ object RPlaylistVarying {
   val rplaylist = forever("i") {
     feed(feeder)
     .exec(http("RPlaylistVarying ${i}")
-      .get("/api/v1/playlist/${UUID}"))
+      .get("/api/v1/playlist/all"))
     .pause(1, 60)
   }
 }
@@ -122,7 +122,7 @@ class ReadTablesSim extends Simulation {
   val httpProtocol = http
     .baseUrl("http://" + Utility.envVar("CLUSTER_IP", "127.0.0.1") + "/")
     .acceptHeader("application/json,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
-    .authorizationHeader("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiZGJmYmMxYzAtMDc4My00ZWQ3LTlkNzgtMDhhYTRhMGNkYTAyIiwidGltZSI6MTYwNzM2NTU0NC42NzIwNTIxfQ.zL4i58j62q8mGUo5a0SQ7MHfukBUel8yl8jGT5XmBPo")
+    .authorizationHeader("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo")
     .acceptLanguageHeader("en-US,en;q=0.5")
 }
 
@@ -239,7 +239,7 @@ object RPlaylist {
   val rplaylist = forever("i") {
     feed(feeder)
     .exec(http("RPlaylist ${i}")
-      .get("/api/v1/playlist/${UUID}"))
+      .get("/api/v1/playlist/all"))
     .pause(Utility.envVarToInt("PAUSE", 1000).millis)
   }
 
