@@ -32,7 +32,6 @@ metadata:
   name: svc-s3
   labels:
     account: SVC_S3
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -40,7 +39,7 @@ metadata:
   labels:
     app: cmpt756s3
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: cmpt756s3
@@ -65,6 +64,6 @@ spec:
             path: /api/v1/playlist/health
             port: 30002
           initialDelaySeconds: 10
-          periodSeconds: 5
+          periodSeconds: 120
           failureThreshold: 5
-          
+
