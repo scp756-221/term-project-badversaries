@@ -92,7 +92,10 @@ def list_playlists():
         return Response(str(ex), status=400, mimetype="application/json")
     payload = {"objtype": "playlist"}
     url = db['name'] + '/' + db['endpoint'][4]
-    response = requests.get(url, params=payload).json()['Items']
+    try:
+        response = requests.get(url, params=payload).json()['Items']
+    except Exception as ex:
+        return Response(str(ex), status=400)
     playlists = list(filter(lambda x: (x['uid'] == user_id), response))
     return ({'playlists' : playlists})
 
@@ -103,7 +106,7 @@ def get_playlist(playlist_id):
         user_id = get_user_from_auth(request.headers)
         playlist = get_detailed_playlist_from_id(playlist_id, request.headers)
     except Exception as ex:
-        return Response(str(ex), status=400, mimetype="application/json")
+        return Response(str(ex), status=400)
     
     if playlist['uid'] != user_id:
         return Response('Not authorized to access this playlist', status=401, mimetype="application/json")

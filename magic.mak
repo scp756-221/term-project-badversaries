@@ -25,3 +25,4 @@ teardown:
 # Delete everything on cluster and then delete the cluster itself
 	make -f k8s.mak scratch
 	make -f eks.mak stop
+	make -f k8s.mak dynamodb-clean
