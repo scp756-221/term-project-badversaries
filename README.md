@@ -66,3 +66,27 @@ $ make -f magic.mak deploy_all
 ~~~
 $ make -f magic.mak teardown
 ~~~
+
+### 6. Load testing with gatling
+To test the performance of our application, especially when under heavy load, run:
+
+~~~
+$ ./gatling-<service>.sh <number_of_requests_per_run> <delay_between_each_run>
+~~~
+We are having all and playlist as two options for <service> here.
+
+ For example, running:
+ 
+~~~
+./gatling-playlist.sh 200 100
+~~~
+ 
+generates 200 requests every 100 ms for the playlist service.
+  
+We can view the result of gatling runs in Grafana dashboard with respecting link.
+  
+To kill the gatling jobs, run
+  ~~~
+./tools/kill-gatling.sh
+~~~
+ 
