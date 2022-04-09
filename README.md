@@ -68,7 +68,7 @@ $ make -f magic.mak teardown
 ~~~
 
 ### 6. Load testing with gatling
-To test the performance of our application especially when under heavy load, run:
+To test the performance of our application when under heavy load, run:
 
 ~~~
 $ ./gatling-<service>.sh <number_of_requests_per_run> <delay_between_each_run>
