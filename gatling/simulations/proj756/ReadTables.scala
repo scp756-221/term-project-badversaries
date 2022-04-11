@@ -36,7 +36,7 @@ object RMusic {
     feed(feeder)
     .exec(http("RMusic ${i}")
       .get("/api/v1/music/${UUID}"))
-      .pause(1)
+      .pause(Utility.envVarToInt("PAUSE", 1000).millis)
   }
 
 }
@@ -49,7 +49,7 @@ object RUser {
     feed(feeder)
     .exec(http("RUser ${i}")
       .get("/api/v1/user/${UUID}"))
-    .pause(1)
+    .pause(Utility.envVarToInt("PAUSE", 1000).millis)
   }
 
 }
@@ -83,6 +83,16 @@ object RMusicVarying {
   }
 }
 
+object RPlaylistVarying {
+  val feeder = csv("playlist.csv").eager.circular
+
+  val rplaylist = forever("i") {
+    feed(feeder)
+    .exec(http("RPlaylistVarying ${i}")
+      .get("/api/v1/playlist/all"))
+    .pause(1, 60)
+  }
+}
 /*
   Failed attempt to interleave reads from User and Music tables.
   The Gatling EDSL only honours the second (Music) read,
@@ -112,7 +122,7 @@ class ReadTablesSim extends Simulation {
   val httpProtocol = http
     .baseUrl("http://" + Utility.envVar("CLUSTER_IP", "127.0.0.1") + "/")
     .acceptHeader("application/json,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
-    .authorizationHeader("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiZGJmYmMxYzAtMDc4My00ZWQ3LTlkNzgtMDhhYTRhMGNkYTAyIiwidGltZSI6MTYwNzM2NTU0NC42NzIwNTIxfQ.zL4i58j62q8mGUo5a0SQ7MHfukBUel8yl8jGT5XmBPo")
+    .authorizationHeader("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNDIzYTEwYTYtYWI2Ni00OGM1LWExYzctZGZmYjMxNjlkNzQ0IiwidGltZSI6MTY0Njk3MDkxNC4xMDA4NTI3fQ.tNOgJT7MmyI01UmvhaHxXxpbUUmQAe7PHt6ImSNuDfo")
     .acceptLanguageHeader("en-US,en;q=0.5")
 }
 
@@ -134,6 +144,54 @@ class ReadMusicSim extends ReadTablesSim {
   ).protocols(httpProtocol)
 }
 
+class ReadPlaylistSim extends ReadTablesSim {
+  val scnReadPlaylist = scenario("ReadPlaylist")
+    .exec(RPlaylist.rplaylist)
+
+  setUp(
+    scnReadPlaylist.inject(atOnceUsers(Utility.envVarToInt("USERS", 1)))
+  ).protocols(httpProtocol)
+}
+
+class ReadAllSim extends ReadTablesSim {
+  val scnReadMusic = scenario("ReadMusic")
+    .exec(RMusic.rmusic)
+  
+  val scnReadPlaylist = scenario("ReadPlaylist")
+    .exec(RPlaylist.rplaylist)
+
+  val scnReadUser = scenario("ReadUse")
+    .exec(RUser.ruser)
+
+  val users = Utility.envVarToInt("USERS", 1)
+
+  setUp(
+    // Add one user per 10 s up to specified value
+    scnReadUser.inject(atOnceUsers(Utility.envVarToInt("USERS", 1))),
+    scnReadMusic.inject(atOnceUsers(Utility.envVarToInt("USERS", 1))),
+    scnReadPlaylist.inject(atOnceUsers(Utility.envVarToInt("USERS", 1)))
+  ).protocols(httpProtocol)
+}
+
+class ReadAllVaryingSim extends ReadTablesSim {
+  val scnReadMV = scenario("ReadMusicVarying")
+    .exec(RMusicVarying.rmusic)
+  
+  val scnReadPV = scenario("ReadPlaylistVarying")
+    .exec(RPlaylistVarying.rplaylist)
+
+  val scnReadUV = scenario("ReadUserVarying")
+    .exec(RUserVarying.ruser)
+
+  val users = Utility.envVarToInt("USERS", 10)
+
+  setUp(
+    // Add one user per 10 s up to specified value
+    scnReadMV.inject(rampConcurrentUsers(1).to(users).during(10*users)),
+    scnReadPV.inject(rampConcurrentUsers(1).to(users).during(10*users)),
+    scnReadUV.inject(rampConcurrentUsers(1).to(users).during(10*users))
+  ).protocols(httpProtocol)
+}
 /*
   Read both services concurrently at varying rates.
   Ramp up new users one / 10 s until requested USERS
@@ -170,3 +228,19 @@ class ReadBothSim extends ReadTablesSim {
   ).protocols(httpProtocol)
 }
 */
+
+/*
+  Read playlist
+*/
+object RPlaylist {
+
+  val feeder = csv("playlist.csv").eager.circular
+
+  val rplaylist = forever("i") {
+    feed(feeder)
+    .exec(http("RPlaylist ${i}")
+      .get("/api/v1/playlist/all"))
+    .pause(Utility.envVarToInt("PAUSE", 1000).millis)
+  }
+
+}
